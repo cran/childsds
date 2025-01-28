@@ -5,7 +5,7 @@
 \alias{lipids.ref}
 \title{Parameters for serum lipids in children}
 \source{
-Dathan-Stumpf, A. et al. Pediatric reference data of serum lipids and prevalence of dyslipidemia: Results from a population-based cohort in Germany. Clinical Biochemistry 49, 740--749 (2016).
+Dathan-Stumpf, A. et al. Pediatric reference data of serum lipids and prevalence of dyslipidemia: Results from a population-based cohort in Germany. Clinical Biochemistry 49, 740--749 (2016). In addition non-hdl references are provided. Publication in progress (Maidowski et al).
 }
 \usage{
 lipids.ref

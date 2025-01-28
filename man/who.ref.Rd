@@ -3,7 +3,7 @@
 \docType{data}
 \name{who.ref}
 \alias{who.ref}
-\title{LMS Parameters for UK-WHO growth charts for height, weight, bmi,
+\title{LMS Parameters for WHO growth charts for height, weight, bmi,
 head circumference,arm mid upper arm circumference, subscapular
 and triceps skinfold, weight for height}
 \source{
@@ -13,7 +13,7 @@ de Onis, M., Onyango, A., Borghi, E., Siyam, A., Blossner, M., & Lutter, C. (201
 who.ref
 }
 \description{
-LMS Parameters for UK-WHO growth charts for height, weight, bmi,
+LMS Parameters for WHO growth charts for height, weight, bmi,
 head circumference,arm mid upper arm circumference, subscapular
 and triceps skinfold, weight for height
 }

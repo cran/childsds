@@ -39,7 +39,7 @@ sds_2d(
 vector containing SDS or percentile values
 }
 \description{
-Calculate SDS values for 2-dimensional matrix of covariates
+Calculate SDS values for 2-dimensional matrix of covariates -- old version
 }
 \details{
 The function takes a vector of measurement values, and of age and a

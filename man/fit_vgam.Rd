@@ -42,7 +42,7 @@ fit_vgam(
 list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 }
 \description{
-fit gamlss
+fit vgam
 }
 \details{
 wrapper around the \code{\link[VGAM]{vgam}} function in the VGAM package

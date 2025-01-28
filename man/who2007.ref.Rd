@@ -3,7 +3,7 @@
 \docType{data}
 \name{who2007.ref}
 \alias{who2007.ref}
-\title{Parameters of skinfold measures derived from Colombian population}
+\title{Parameters of bmi, height, and weight; WHO 2007}
 \source{
 Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 2007. Development of a WHO growth reference for school-aged children and adolescents. Bulletin of the World health Organization 85, 660-667.
 }
@@ -11,5 +11,5 @@ Onis, M. de, Onyango, A.W., Borghi, E., Siyam, A., Nishida, C., Siekmann, J., 20
 who2007.ref
 }
 \description{
-Parameters of skinfold measures derived from Colombian population
+Parameters of bmi, height, and weight; WHO 2007
 }

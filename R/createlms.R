@@ -1,4 +1,4 @@
-##' prepare data for repeated iteration process
+#' prepare data for repeated iteration process
 ##'
 ##' given a dataframe, the column name of the subject identifier, sex, age,
 ##' value and group colums, the function creates a dataframe containing only
@@ -11,6 +11,7 @@
 ##' @param sex column containing the sex (or any other stratum), ideally of type character, iteration process will run on each of the levels separately
 ##' @param value numeric column containing the measurement values
 ##' @param age numeric column containing the age
+##' @param x2 numeric column containing a second covariate
 ##' @param lb optional - lower bound for age
 ##' @param ub optional - upper bound for age
 ##' @return list of dataframes containing the columns group, subject, sex, age, value; one dataframe for every level of sex
@@ -19,7 +20,9 @@
 ##' @importFrom magrittr  %>%
 ##' @importFrom dplyr n
 ##' @export
-prepare_data <- function(data, group = NULL, subject = "SIC", sex = NULL, value = "value", age = "age", lb = -Inf, ub = Inf){
+prepare_data <- function(data, group = NULL, subject = "SIC", sex = NULL,
+                         value = "value", age = "age", x2 = "x2",
+                         lb = -Inf, ub = Inf){
     if(is.null(group)){
         data$group <- NA
         group <- "group"
@@ -29,13 +32,18 @@ prepare_data <- function(data, group = NULL, subject = "SIC", sex = NULL, value 
         data$sex <- "all"
         sex <- "sex"
     }    
-    data %<>% dplyr::select(group, subject, value, age, sex)
-    data %<>% dplyr::rename("subject" = subject,
-                      "group" = group,
-                      "sex" = sex,
-                      "value" = value,
-                      "age" = age) 
-    data %<>% tidyr::drop_na(subject, sex, value, age) %>% dplyr::ungroup()
+    data %<>% dplyr::select(group, subject, value, age, sex, tidyselect::matches(x2))
+    data %<>% dplyr::rename(
+                         "subject" = subject,
+                         "group" = group,
+                         "sex" = sex,
+                         "value" = value,
+                         "age" = age
+                     )
+    if(any(names(data) == x2)) {
+        data %<>% dplyr::rename("x2" = x2) 
+    }
+    data %<>% tidyr::drop_na(subject, sex, value, age, tidyselect::matches("x2")) %>% dplyr::ungroup()
     data %<>% dplyr::filter(dplyr::between(age, lb, ub))
     split(data, data$sex)
 }
@@ -138,7 +146,7 @@ fit_gamlss <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.
     invisible(return(NULL))
 }
 
-##' fit gamlss
+##' fit vgam
 ##'
 ##' wrapper around the \code{\link[VGAM]{vgam}} function in the VGAM package
 ##' returns the fitted lms-parameter at given age points
@@ -195,16 +203,19 @@ fit_vgam <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.mo
 ##' @param age.min lower bound of age
 ##' @param age.max upper bound of age
 ##' @param age.int stepwidth of the age variable
+##' @param x2.min minimum limit for the second predictor 
+##' @param x2.max maximum limit for the second predictor 
+##' @param x2.int interval length between knots saved
 ##' @param keep.models indicator whether or not models in each iteration should be kept
 ##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
 ##' @param formula formula for the location parameter
-##' @param sigma.formula formula for the sigma parameter
-##' @param nu.formula formula for the nu parameter
-##' @param tau.formula formula for the tau parameter
 ##' @param sigma.df degree of freedem spread parameter
 ##' @param nu.df degree of freedem skewness parameter
 ##' @param mu.df degree of freedem location parameter
 ##' @param tau.df degree of freedem kurtosis parameter
+##' @param sigma.formula formula for the sigma parameter
+##' @param nu.formula formula for the nu parameter
+##' @param tau.formula formula for the tau parameter
 ##' @param verbose whether or not information about sampling will be printed during while iterate
 ##' @param trans.x indicator wether age should be transformed or not
 ##' @param lim.trans limits for the exponent of transformation of age
@@ -214,6 +225,7 @@ fit_vgam <- function(data, age.min = 0.25, age.max = 18, age.int = 1/12, keep.mo
 ##' @export
 one_iteration <- function(data.list, method, prop.fam = 0.75, prop.subject = 1,
                           age.min = 0, age.max = 18, age.int = 1/12,
+                          x2.min = 25, x2.max = 42, x2.int = 1/12,
                           keep.models = F,
                           dist = "BCCGo",
                           formula = NULL,
@@ -237,7 +249,16 @@ one_iteration <- function(data.list, method, prop.fam = 0.75, prop.subject = 1,
                             nu.formula = nu.formula,
                             tau.formula = tau.formula,
                             formula = formula, method.pb = method.pb,
-                            age.min = age.min, age.max = age.max)
+                            age.min = age.min, age.max = age.max),
+           gamlss2d = lapply(tmp.l,
+                             fit_gamlss_2d, dist = dist, keep.models = keep.models,
+                             sigma.formula = sigma.formula,
+                             nu.formula = nu.formula,
+                             tau.formula = tau.formula,
+                             formula = formula, method.pb = method.pb,
+                             age.min = age.min, age.max = age.max,
+                             x2.min = x2.min, x2.max = x2.max
+                             )
            )
 }
 
@@ -255,7 +276,9 @@ one_iteration <- function(data.list, method, prop.fam = 0.75, prop.subject = 1,
 ##' @export
 do_iterations <- function(data.list, n = 10, max.it = 1000,
                           method = "gamlss", prop.fam = 0.75, prop.subject = 1,
-                          age.min = 0, age.max = 18, age.int = 1/12,keep.models = F,
+                          age.min = 0, age.max = 18, age.int = 1/12,
+                          x2.min = 25, x2.max = 42, x2.int = 1/12,
+                          keep.models = F,
                           dist = "BCCGo",
                           mu.df = 4, sigma.df = 3, nu.df = 2, tau.df = 2, verbose = F,
                           formula = NULL, 
@@ -322,8 +345,9 @@ do_iterations <- function(data.list, n = 10, max.it = 1000,
         models <- NULL
     }
     attr(lms, "distribution") <- dist
-    list(lms = lms, models = models)
-
+    res <- list(lms = lms, models = models)
+    save(res, file = paste0(as.character(lubridate::today()), "_iterations_tmp.rdata"))
+    res
 }
 
 ##' aggregate lms parameters
@@ -414,7 +438,7 @@ find.nearest.month <- function(x){
 }
 
 
-##' fit_gamlss
+##' fit_gamlss1
 ##' 
 ##' wrapper around the \code{\link[gamlss]{gamlss}} function from the gamlss package
 ##' returns the fitted lms-parameter at given age points
@@ -467,6 +491,77 @@ fit_gamlss1 <- function(data, age.min = 0, age.max = 80, age.int = 1/12, keep.mo
                                                 ))
         lms$age <- age
         lms <- lms %>% dplyr::select(age, dplyr::everything())
+        if(!keep.models) mm <- NULL
+        return(list(lms = lms, model = mm))
+    }
+    invisible(return(NULL))
+}
+
+
+
+
+##' fit_gamlss 2dim
+##' 
+##' wrapper around the \code{\link[gamlss]{gamlss}} function from the gamlss package
+##' returns the fitted lms-parameter at given age points
+##' the function is called inside \code{\link{do_iterations}} and may not be called directly
+##' @title fit_gamlss_2d
+##' @param data dataframe as return by select_meas()
+##' @param age.min lower bound of age
+##' @param age.max upper bound of age
+##' @param age.int stepwidth of the age variable
+##' @param x2.min minimum limit for the second predictor 
+##' @param x2.max maximum limit for the second predictor 
+##' @param x2.int interval length between knots saved
+##' @param keep.models indicator whether or not models in each iteration should be kept
+##' @param dist distribution used for the fitting process, has to be one of BCCGo, BCPEo, BCTo as they are accepted by lms()
+##' @param formula formula for the location parameter
+##' @param sigma.formula formula for the sigma parameter
+##' @param nu.formula formula for the nu parameter
+##' @param tau.formula formula for the tau parameter
+##' @param method.pb GAIC or ML
+##' @return list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
+##' @author Mandy Vogel
+fit_gamlss_2d <- function(data,
+                          age.min = 0, age.max = 80, age.int = 1/12,
+                          x2.min = 25, x2.max = 42, x2.int = 1,
+                          keep.models = F,
+                          dist = "BCCGo", formula = NULL, 
+                          sigma.formula = ~1, nu.formula = ~1, tau.formula = ~1,
+                          method.pb = "ML"){
+    formula <- formula(formula)
+    tr.obj <- try(mm <- gamlss::gamlss(formula,
+                                       sigma.formula = sigma.formula,
+                                       nu.formula = nu.formula,
+                                       tau.formula = tau.formula,
+                                       family = dist,
+                                       method.pb = method.pb,
+                                       k = 2,trace = F,
+                                       data = data[,-grep("group",names(data))],
+                                       ))
+    if("try-error" %in% class(tr.obj) ){
+            tr.obj <- try(mm <- gamlss::gamlss(formula,
+                                               sigma.formula = sigma.formula,
+                                               nu.formula = nu.formula,
+                                               tau.formula = ~ 1,
+                                               family = dist,
+                                               method.pb = "GAIC",
+                                               k = 2,trace = F,
+                                               data = data[,-grep("group",names(data))],
+                                               ))
+    }
+    if(!exists("mm") || is.null(mm)) invisible(return(NULL)) 
+    age <- seq(age.min, age.max, by = age.int)
+    x2 <- seq(x2.min, x2.max, by = x2.int)
+    newdat <- expand.grid(age = age,
+                          x2 = x2)
+    if (mm$family[1] == dist & !("try-error" %in% class(tr.obj))) {
+        lms <- as.data.frame(gamlss::predictAll(mm,
+                                                newdata = newdat,
+                                                data = data
+                                                ))
+        lms <- dplyr::bind_cols(newdat, lms)
+        lms <- lms %>% dplyr::select(age, x2, dplyr::everything())
         if(!keep.models) mm <- NULL
         return(list(lms = lms, model = mm))
     }

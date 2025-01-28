@@ -80,9 +80,17 @@ setMethod("show","ParTab",
             cat("\n*** Table of Reference Values ***\n")
             print(paste(object@item, "fitted with:",
                         paste(paste(names(object@dist), object@dist), collapse = ", ")))
-            print(data.frame(
-                sex = names(object@params),
-                minage=sapply(object@params, function(x) min(x$age)),
-                maxage=sapply(object@params, function(x) max(x$age)))) 
-          })
+            if(inherits(object@params$male$age, "factor")) {
+                print(data.frame(
+                    sex = names(object@params),
+                    pubstatus=sapply(object@params, function(x) paste(unique(x$age), collapse = "," ))
+                )) 
+            } else {
+                print(data.frame(
+                    sex = names(object@params),
+                    minage=sapply(object@params, function(x) min(x$age)),
+                    maxage=sapply(object@params, function(x) max(x$age)))
+                    ) 
+            }
+            })
 

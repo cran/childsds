@@ -5,7 +5,7 @@
 \alias{kawel_boehm.ref}
 \title{Parameters for Cardiovascular Magnetic Resonance}
 \source{
-"Kawel-Boehm N, Hetzel SJ, Ambale-Venkatesh B, et al. Reference ranges (“normal values”) for cardiovascular magnetic resonance (CMR) in adults and children: 2020 update. Journal of Cardiovascular Magnetic Resonance 2020;22(1):87."
+Kawel-Boehm N, Hetzel SJ, Ambale-Venkatesh B, et al. Reference ranges (normal values) for cardiovascular magnetic resonance (CMR) in adults and children: 2020 update. Journal of Cardiovascular Magnetic Resonance 2020;22(1):87.
 }
 \usage{
 kawel_boehm.ref

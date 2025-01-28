@@ -5,7 +5,7 @@
 \alias{life_fibroscan.ref}
 \title{Parameters for fibroscan from the LIFE Child cohort}
 \source{
-"preliminary reference values cap med and e med from fibroscan in the life child study. Publication (Puasa et al) in preparation."
+Brunnert, L., Puasa, I.D., Garten, A., Penke, M., Gaul, S., Grafe, N., Karlas, T., Kiess, W., Flemming, G., Vogel, M., 2022. Pediatric percentiles for transient elastography measurements - effects of age, sex, weight status and pubertal stage. Front Endocrinol (Lausanne) 13, 1030809. https://doi.org/10.3389/fendo.2022.1030809
 }
 \usage{
 life_fibroscan.ref

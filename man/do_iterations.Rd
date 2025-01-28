@@ -14,6 +14,9 @@ do_iterations(
   age.min = 0,
   age.max = 18,
   age.int = 1/12,
+  x2.min = 25,
+  x2.max = 42,
+  x2.int = 1/12,
   keep.models = F,
   dist = "BCCGo",
   mu.df = 4,
@@ -48,6 +51,12 @@ do_iterations(
 \item{age.max}{upper bound of age}
 
 \item{age.int}{stepwidth of the age variable}
+
+\item{x2.min}{minimum limit for the second predictor}
+
+\item{x2.max}{maximum limit for the second predictor}
+
+\item{x2.int}{interval length between knots saved}
 
 \item{keep.models}{indicator whether or not models in each iteration should be kept}
 

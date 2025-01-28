@@ -5,11 +5,17 @@
 \alias{life_heart.ref}
 \title{hs-Troponin T and NT-proBNP from the LIFE Child cohort}
 \source{
-"Kiess A, Green J, Willenberg A, et al. Age-dependent reference values for hs-Troponin T and NT-proBNP and determining factors in a cohort of healthy children (The LIFE child study). Pediatric Cardiology 2022. Accepted"
+Kiess A, Green J, Willenberg A, et al. Age-dependent reference values for hs-Troponin T and NT-proBNP and determining factors in a cohort of healthy children (The LIFE child study). Pediatric Cardiology 2022.
+
+Kiess, A., Green, J., Willenberg, A., Ceglarek, U., Dähnert, I., Jurkutat, A., Körner, A., Hiemisch, A., Kiess, W., Vogel, M., 2022. Age-Dependent Reference Values for Hs-Troponin T and Nt-Probnp and Determining Factors in a Cohort of Healthy Children (the Life Child Study). Pediatr Cardiol 43, 1071–1083. https://doi.org/10.1007/s00246-022-02827-x
 }
 \usage{
+life_heart.ref
+
 life_heart.ref
 }
 \description{
 hs-Troponin T and NT-proBNP from the LIFE Child cohort
+
+Parameters for heart markers
 }

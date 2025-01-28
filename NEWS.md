@@ -1,3 +1,36 @@
+# childsds 0.9.9
+* add leptin
+* add sds_pub2d()
+# childsds 0.9.8
+* add lightness
+# childsds 0.9.4
+* add calc\_perc\_excess()
+* add life_vegf.ref
+* add life_shgb.ref
+# childsds 0.9.1
+## Major changes
+* add life_steroide.ref
+* add life_oxyandrogen.ref
+## Minor changes
+* correct life_thyroid.ref
+* add life_hba1c.ref
+# childsds 0.9.0
+## Major changes
+* new version sds2d
+* new function make_percentile_tab2d
+* new function wormplot2d_gg
+* add ripka_bf.ref
+* add linden_heart.ref
+* add ofenheimer_bf.ref
+* add cole_lobstein.ref
+* add valencia_nc.ref
+* add ghouili_anthro.ref
+* add gomez_bmitmi.ref
+* add schafmeyer_leg.ref
+* add liao_igf1.ref
+## Minor changes
+* now, the wormplots using quantiles instead of equal spaced cut points for grouping
+* remove non-valid references from nl4.ref
 # childsds 0.8.0
 ## Major changes
 * add life_fibroscan.ref
@@ -80,7 +113,7 @@
 * add subscapular skinfold to kiggs.ref
 * add function to find better upper and lower age bounds (full month)
 ## Bug fixes
-*  remove user accessible documentation of unexported functions
+*  remove user accessable documentation of unexported functions
 
 # childsds 0.6.2
 ## Major changes

@@ -19,11 +19,22 @@ NULL
 
 #' LMS Parameters for German reference data (Kromeyer Hauschild, 2001)
 #' for height, weight, bmi, and waist circumference, including preterm
-#' correction (Voigt)
+#' correction (Voigt) and census data for ages 18+ to 92 years
 #' @name kro.ref
 #' @docType data
 #' @usage kro.ref
 #' @source Perzentile fuer den Body-mass-Index fuer das Kindes- und Jugendalter unter Heranziehung verschiedener deutscher Stichproben, Monatsschrift Kinderheilkunde August 2001, Volume 149, Issue 8, pp 807-818; Fruehgeborenenkorrektur nach Voigt
+NULL
+
+
+#' LMS Parameters for German reference data (Kromeyer Hauschild, 2015)
+#' for height, weight, bmi, and waist circumference, including preterm
+#' correction (Voigt) and Kromyer-Hausschild 2015
+#' @name kro.ref15
+#' @docType data
+#' @usage kro.ref15
+#' @source Perzentile fuer den Body-mass-Index fuer das Kindes- und Jugendalter unter Heranziehung verschiedener deutscher Stichproben, Monatsschrift Kinderheilkunde August 2001, Volume 149, Issue 8, pp 807-818; preterm adjustment Voigt; Adults: Kromeyer-Hauschild K, Moss A, Wabitsch M. Referenzwerte für den Body-Mass-Index für Kinder, Jugendliche und Erwachsene in Deutschland. Adipositas - Ursachen, Folgeerkrankungen, Therapie. 2015;09(3):123-127. doi:10.1055/s-0037-1618928
+
 NULL
 
 #' LMS Parameters for UK-WHO growth charts for height,
@@ -35,7 +46,7 @@ NULL
 NULL
 
 
-#' LMS Parameters for UK-WHO growth charts for height, weight, bmi,
+#' LMS Parameters for WHO growth charts for height, weight, bmi,
 #' head circumference,arm mid upper arm circumference, subscapular
 #' and triceps skinfold, weight for height
 #' @name who.ref
@@ -57,7 +68,7 @@ NULL
 #' @name lipids.ref
 #' @docType data
 #' @usage lipids.ref
-#' @source Dathan-Stumpf, A. et al. Pediatric reference data of serum lipids and prevalence of dyslipidemia: Results from a population-based cohort in Germany. Clinical Biochemistry 49, 740--749 (2016).
+#' @source Dathan-Stumpf, A. et al. Pediatric reference data of serum lipids and prevalence of dyslipidemia: Results from a population-based cohort in Germany. Clinical Biochemistry 49, 740--749 (2016). In addition non-hdl references are provided. Publication in progress (Maidowski et al).
 NULL
 
 #' Parameters derived from Turkish children
@@ -168,7 +179,7 @@ NULL
 NULL
 
 
-#' Parameters of skinfold measures derived from Colombian population 
+#' Parameters of bmi, height, and weight; WHO 2007
 #' @name who2007.ref
 #' @docType data
 #' @usage who2007.ref
@@ -262,6 +273,14 @@ NULL
 NULL
 
 
+#' Parameters for hba1c based on a child cohort a) including overweight and b) excluding overweight children
+#' @name life_hba1c.ref
+#' @docType data
+#' @usage life_hba1c.ref
+#' @source "Hovestadt, I., Kiess, W., Lewien, C., Willenberg, A., Poulain, T., Meigen, C., Körner, A., Vogel, M., 2022. HbA1c Percentiles and the Association between BMI, Age, Gender, Puberty and HbA1c Levels in Healthy German Children and Adolescents. Pediatr Diabetes 23, 194–202. https://doi.org/10.1111/pedi.13297"
+NULL
+
+
 #' Parameters for different circumferences and whr and whtr
 #' @name life_circ.ref
 #' @docType data
@@ -300,7 +319,7 @@ NULL
 #' @name bone.ref
 #' @docType data
 #' @usage bone.ref
-#' @source "Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124 and Weber et al. unpublishedfor VitD binding protein"
+#' @source Geserick M, Vogel M, Eckelt F, et al. Children and adolescents with obesity have reduced serum bone turnover markers and 25-hydroxyvitamin D but increased parathyroid hormone concentrations – Results derived from new pediatric reference ranges. Bone 2020;132:115124 and Eberle et al. unpublishedfor VitD binding protein
 NULL
 
 
@@ -319,7 +338,6 @@ NULL
 #' @usage cn.ref
 #' @source "Kempf et al. In progress"
 NULL
-
 
 
 #' Parameters for TSH, FT3, FT4 from the LIFE Child cohort
@@ -348,7 +366,7 @@ NULL
 #' @name life_heart.ref
 #' @docType data
 #' @usage life_heart.ref
-#' @source "Kiess A, Green J, Willenberg A, et al. Age-dependent reference values for hs-Troponin T and NT-proBNP and determining factors in a cohort of healthy children (The LIFE child study). Pediatric Cardiology 2022. Accepted"
+#' @source Kiess A, Green J, Willenberg A, et al. Age-dependent reference values for hs-Troponin T and NT-proBNP and determining factors in a cohort of healthy children (The LIFE child study). Pediatric Cardiology 2022. 
 NULL
 
 
@@ -364,7 +382,7 @@ NULL
 #' @name life_igf.ref
 #' @docType data
 #' @usage life_igf.ref
-#' @source "Hoerenz C, Vogel M, Wirkner K. BMI and contraceptives affect new age-, sex-, and puberty-adjusted IGF-﻿I and IGFBP-﻿3 reference ranges across life span. JCEM 2022 (in (minor) revision)."
+#' @source Hoerenz C, Vogel M, Wirkner K. BMI and contraceptives affect new age-, sex-, and puberty-adjusted IGF-﻿I and IGFBP-﻿3 reference ranges across life span. JCEM 2022 (in (minor) revision).
 NULL
 
 
@@ -372,7 +390,7 @@ NULL
 #' @name kawel_boehm.ref
 #' @docType data
 #' @usage kawel_boehm.ref
-#' @source "Kawel-Boehm N, Hetzel SJ, Ambale-Venkatesh B, et al. Reference ranges (“normal values”) for cardiovascular magnetic resonance (CMR) in adults and children: 2020 update. Journal of Cardiovascular Magnetic Resonance 2020;22(1):87."
+#' @source Kawel-Boehm N, Hetzel SJ, Ambale-Venkatesh B, et al. Reference ranges (normal values) for cardiovascular magnetic resonance (CMR) in adults and children: 2020 update. Journal of Cardiovascular Magnetic Resonance 2020;22(1):87.
 NULL
 
 
@@ -380,5 +398,200 @@ NULL
 #' @name life_fibroscan.ref
 #' @docType data
 #' @usage life_fibroscan.ref
-#' @source "preliminary reference values cap med and e med from fibroscan in the life child study. Publication (Puasa et al) in preparation."
+#' @source Brunnert, L., Puasa, I.D., Garten, A., Penke, M., Gaul, S., Grafe, N., Karlas, T., Kiess, W., Flemming, G., Vogel, M., 2022. Pediatric percentiles for transient elastography measurements - effects of age, sex, weight status and pubertal stage. Front Endocrinol (Lausanne) 13, 1030809. https://doi.org/10.3389/fendo.2022.1030809
 NULL
+
+
+#' Parameters for fat and lean mass from Ripka et al, 2020
+#' @name ripka_bf.ref
+#' @docType data
+#' @usage ripka_bf.ref
+#' @source Ripka, W.L. et al. (2020) Lean mass reference curves in adolescents using dual-energy x-ray absorptiometry (DXA), PLOS ONE, 15(2), p. e0228646. doi:10.1371/journal.pone.0228646.
+NULL
+
+
+#' Parameters for left artrial volumne Linden et al, 
+#' @name linden_heart.ref
+#' @docType data
+#' @usage linden_heart.ref
+#' @source Linden, K. et al. (2019) Left Atrial Volumes and Phasic Function in Healthy Children: Reference Values Using Real-Time Three-Dimensional Echocardiography, Journal of the American Society of Echocardiography, 32(8), pp. 1036-1045.e9. doi:10.1016/j.echo.2019.03.018.
+NULL
+
+
+
+#' Parameters for fat and lean mass from Ofenheimer et al., 2020
+#' @name ofenheimer_bf.ref
+#' @docType data
+#' @usage ofenheimer_bf.ref
+#' @source Ofenheimer A, Breyer-Kohansal R, Hartl S, et al. Reference values of body composition parameters and visceral adipose tissue (VAT) by DXA in adults aged 18–81 years—results from the LEAD cohort. European Journal of Clinical Nutrition 2020;74(8):1181–91.
+NULL
+
+
+#' Parameters for bmi from Cole and Lobstein, 2012
+#' @name cole_lobstein.ref
+#' @docType data
+#' @usage cole_lobstein.ref
+#' @source Cole TJ, Lobstein T. Extended international (IOTF) body mass index cut-offs for thinness, overweight and obesity. Pediatric Obesity 2012;7(4):284–94.                         
+NULL
+
+
+#' Parameters for neck circumference from Valencia-Sosa, 2021
+#' @name valencia_nc.ref
+#' @docType data
+#' @usage valencia_nc.ref
+#' @source Valencia-Sosa E, Chavez-Palencia C, Vallarta-Robledo JR, et al. Percentile Reference Values for the Neck Circumference of Mexican Children. Children 2021;8(5):407. 
+NULL
+
+
+#' Parameters for height, weight, sitting height, etc from Ghouili, 2021
+#' @name ghouili_anthro.ref
+#' @docType data
+#' @usage ghouili_anthro.ref
+#' @source Ghouili H, Ouerghi N, Boughalmi A, Dridi A, Rhibi F, Bouassida A. First growth reference curves for Tunisian children and adolescents. Archives de Pediatrie 2021;28(5):381–91
+NULL
+
+
+#' Parameters for BMI and TMI from Gomez, 2021
+#' @name gomez_bmitmi.ref
+#' @docType data
+#' @usage gomez_bmitmi.ref
+#' @source Gomez-Campos R, Vidal-Espinoza R, Marques de Moraes A, et al. Comparison of Anthropometric Indicators That Assess Nutritional Status From Infancy to Old Age and Proposal of Percentiles for a Regional Sample of Chile. Frontiers in Nutrition 2021 [cited 2022 May 28];8. Available from: https://www.frontiersin.org/article/10.3389/fnut.2021.657491
+NULL
+
+
+#' Parameters for bone mineral content/density, fm, lm (lower limbs) from Schafmeyer, 2022
+#' @name schafmeyer_leg.ref
+#' @docType data
+#' @usage schafmeyer_leg.ref
+#' @source Schafmeyer L, Linden T, Sill H, Rehberg M, Schoenau E, Duran I. Pediatric Reference Centiles of Bone Mineral Density and Body Composition of Lower Limbs. Journal of Clinical Densitometry. 2022 Jan;25(1):73–80. 
+NULL
+
+
+#' Parameters for IGF-1 from Liao, 2016
+#' @name liao_igf1.ref
+#' @docType data
+#' @usage liao_igf1.ref
+#' @source Liao ZH, Yin QQ, Wan JX, He W, Ji W, Zhang LY, et al. Serum Insulin-like growth factor-1 levels of healthy adults in southern China. Endocr J. 2016 Dec 30;63(12):1081–6.
+NULL
+
+
+#' Parameters for fat and lean mass from Kirk, 2021
+#' @name kirk_bf.ref
+#' @docType data
+#' @usage kirk_bf.ref
+#' @source Kirk B, Bani Hassan E, Brennan-Olsen S, et al. Body composition reference ranges in community-dwelling adults using dual-energy X-ray absorptiometry: the Australian Body Composition (ABC) Study. Journal of Cachexia, Sarcopenia and Muscle 2021;12(4):880–90.
+NULL
+
+
+#' Parameters for oxyandrogenes
+#' @name life_oxyandrogene.ref
+#' @docType data
+#' @usage life_oxyandrogene.ref
+#' @source Zeidler R, Wagner F, et al. in preparation
+NULL
+
+
+#' Parameters for steroid hormones
+#' @name life_steroide.ref
+#' @docType data
+#' @usage life_steroide.ref
+#' @source Bae, Y.J., Zeidler, R., Baber, R., Vogel, M., Wirkner, K., Loeffler, M., Ceglarek, U., Kiess, W., Koerner, A., Thiery, J., Kratzsch, J., 2019. Reference intervals of nine steroid hormones over the life-span analyzed by LC-MS/MS: Effect of age, gender, puberty, and oral contraceptives. J. Steroid Biochem. Mol. Biol. 193, 105409. https://doi.org/10.1016/j.jsbmb.2019.105409
+NULL
+
+
+#' Parameters for vegf-d
+#' @name life_vegf.ref
+#' @docType data
+#' @usage life_vegf.ref
+#' @source Arelin M. et al. in preparation
+NULL
+
+
+#' Parameters for shbg
+#' @name life_shbg.ref
+#' @docType data
+#' @usage life_shbg.ref
+#' @source Duergen P. et al. in preparation
+NULL
+
+
+#' Parameters for complete blood count
+#' @name life_cbc.ref
+#' @docType data
+#' @usage life_cbc.ref
+#' @source Sommer et al. In preparation
+NULL
+
+
+#' Parameters for heart markers
+#' @name life_heart.ref
+#' @docType data
+#' @usage life_heart.ref
+#' @source Kiess, A., Green, J., Willenberg, A., Ceglarek, U., Dähnert, I., Jurkutat, A., Körner, A., Hiemisch, A., Kiess, W., Vogel, M., 2022. Age-Dependent Reference Values for Hs-Troponin T and Nt-Probnp and Determining Factors in a Cohort of Healthy Children (the Life Child Study). Pediatr Cardiol 43, 1071–1083. https://doi.org/10.1007/s00246-022-02827-x
+NULL
+
+
+#' Parameters for alkaline phosphatase
+#' @name life_ap.ref
+#' @docType data
+#' @usage life_ap.ref
+#' @source Strauch, J.-M., Vogel, M., Meigen, C., Ceglarek, U., Kratzsch, J., Willenberg, A., Kiess, W., 2023. Pediatric reference values of alkaline phosphatase: Analysis from a German population-based cohort and influence of anthropometric and blood parameters. Bone 174, 116809. https://doi.org/10.1016/j.bone.2023.116809
+NULL
+
+
+#' Parameters for creatine kinase
+#' @name life_ck.ref
+#' @docType data
+#' @usage life_ck.ref
+#' @source Publication in Preparation
+NULL
+
+
+#' Parameters for cobalamin and folate (awkward)
+#' @name life_vit.ref
+#' @docType data
+#' @usage life_vit.ref
+#' @source Kreusler, P., Vogel, M., Willenberg, A., Baber, R., Dietz, Y., Körner, A., Ceglarek, U., Kiess, W., 2021. Folate and Cobalamin Serum Levels in Healthy Children and Adolescents and Their Association with Age, Sex, Bmi and Socioeconomic Status. Nutrients 13. https://doi.org/10.3390/nu13020546
+NULL
+
+
+#' Parameters regarding soluble transferrin receptor
+#' @name life_stfr.ref
+#' @docType data
+#' @usage life_stfr.ref
+#' @source Prenzel et al. In Preparation.
+NULL
+
+
+#' Parameters regarding folate and cobalamine
+#' @name life_folb12.ref
+#' @docType data
+#' @usage life_folb12.ref
+#' @source Kreusler, P., Vogel, M., Willenberg, A., Baber, R., Dietz, Y., Körner, A., Ceglarek, U., Kiess, W., 2021. Folate and Cobalamin Serum Levels in Healthy Children and Adolescents and Their Association with Age, Sex, Bmi and Socioeconomic Status. Nutrients 13. https://doi.org/10.3390/nu13020546
+NULL
+
+
+#' Parameters regarding HbA1c
+#' @name life_hba1c.ref
+#' @docType data
+#' @usage life_hba1c.ref
+#' @source Hovestadt, I., Kiess, W., Lewien, C., Willenberg, A., Poulain, T., Meigen, C., Körner, A., Vogel, M., 2022. HbA1c Percentiles and the Association between BMI, Age, Gender, Puberty and HbA1c Levels in Healthy German Children and Adolescents. Pediatr Diabetes 23, 194–202. https://doi.org/10.1111/pedi.13297
+NULL
+
+
+#' Parameters regarding lightness and height-to-mass ratio
+#' @name kiggs_lightness.ref
+#' @docType data
+#' @usage kiggs_lightness.ref
+#' @source Kliegl et al. in preparation
+NULL
+
+
+#' Parameters for leptin dependent on age/puberty and bmi
+#' @name leptin.ref
+#' @docType data
+#' @usage leptin.ref
+#' @source Brandt-Hedunemann et al. In preparation
+NULL
+
+

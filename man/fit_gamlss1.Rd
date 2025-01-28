@@ -45,7 +45,7 @@ fit_gamlss1(
 list containing a dataframe of the fitted lms parameter at the given age points and the fitted model
 }
 \description{
-fit_gamlss
+fit_gamlss1
 }
 \details{
 wrapper around the \code{\link[gamlss]{gamlss}} function from the gamlss package

@@ -11,6 +11,7 @@ prepare_data(
   sex = NULL,
   value = "value",
   age = "age",
+  x2 = "x2",
   lb = -Inf,
   ub = Inf
 )
@@ -27,6 +28,8 @@ prepare_data(
 \item{value}{numeric column containing the measurement values}
 
 \item{age}{numeric column containing the age}
+
+\item{x2}{numeric column containing a second covariate}
 
 \item{lb}{optional - lower bound for age}
 
