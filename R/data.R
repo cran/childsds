@@ -507,7 +507,7 @@ NULL
 NULL
 
 
-#' Parameters for shbg
+#' Parameters for shbg and testosterone-shbg-ratio
 #' @name life_shbg.ref
 #' @docType data
 #' @usage life_shbg.ref
@@ -592,6 +592,14 @@ NULL
 #' @docType data
 #' @usage leptin.ref
 #' @source Brandt-Hedunemann et al. In preparation
+NULL
+
+
+#' UCHU colour scales
+#' @name uchu.pal
+#' @docType data
+#' @usage uchu.pal
+#' @source https://github.com/NeverCease/uchu
 NULL
 
 

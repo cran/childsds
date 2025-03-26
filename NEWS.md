@@ -1,3 +1,9 @@
+# childsds 0.9.11
+* add vignette leptin
+# childsds 0.9.10
+* add uchu colour and fill scale
+* add prs colour and fill scale
+* add ridit-related functions
 # childsds 0.9.9
 * add leptin
 * add sds_pub2d()

@@ -1,0 +1,146 @@
+---
+title: "Leptin SDS"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{Leptin SDS}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+```{r setup}
+library(childsds)
+library(dplyr)
+data(leptin.ref)
+```
+
+
+# Children: Age- and BMI-SDS-adjusted Leptin-SDS #
+
+For children and adolescents up to an age of 18.5 years, leptin standard deviation scores will be calclated based on age on years and BMI-SDS. BMI-SDS via the `x2=` argument to the `sds_2d()` function. 
+
+Besides, the `sds_2d()` function takes the leptin value (`value=`), sex (`sex=`) and age (`age=`) as arguments. These values have to be given as vectors of the same length. In addition, it needs a reference object (in our case `ref=leptin.ref`) and the item (`item=`). For children younger than 6, the item is 'leptin_until6', for children between 6 and 18, it is 'leptin_6to18'. The function returns a numeric vector of the same length containing leptin-SDS  (`type="SDS"`) or leptin percentiles (`type="perc"`). 
+
+## A single value ##
+
+```{r include=TRUE}
+sds_2d(value = 20, age = 10, x2 = 1, sex = "male", item = "leptin_until6", ref = leptin.ref)
+```
+
+
+## Within a data set ##
+
+
+### Create a sample data set ###
+
+```{r include=TRUE}
+df <- data.frame(age = seq(0.5, 6.5, by = 1),
+                 sex = sample(c("m","f"),7, replace = T),
+                 bmisds = rnorm(7),
+                 leptin = runif(7, min = 0.01, max = 5))
+df
+```
+
+### Calculate Leptin-SDS ###
+
+```{r include=TRUE}
+
+df$leptin_sds <- sds_2d(value = df$leptin,
+                       age = df$age,
+                       x2 = df$bmisds,
+                       sex = df$sex, male = "m", female = "f",
+                       item = "leptin_until6",
+                       ref = leptin.ref)
+df
+```
+
+# Children: Tanner Stage and BMI-SDS dependent SDS values #
+
+For SDS adjusted for pubertal stage, you have to use the function `sds_pub2d()`. Again, the leptin value (`value=`), the Tanner stage (1-5, `pubstat=`), the BMI-SDS (`x2=`) and the sex (`sex=`) has to be given to the function as vectors of the same length. The `ref` object is still `leptin.ref` and the `item=lep_pub`. The reference values are valid for the age range 6-18.
+
+## A single value ##
+
+```{r include=TRUE}
+sds_pub2d(value = 20,
+          pubstat = 2,
+          x2 = 1,
+          sex = "male",
+          item = "lep_pub", ref = leptin.ref)
+```
+
+### Create a sample data set ###
+```{r include=TRUE}
+df <- data.frame(age = seq(0.5, 6.5, by = 1),
+                 sex = sample(c("m","f"),7, replace = T),
+                 bmisds = rnorm(7),
+                 leptin = runif(7, min = 0.01, max = 5))
+df
+```
+
+### Calculate Leptin-SDS ###
+```{r include=TRUE}
+df$leptin_sds <- sds_2d(value = df$leptin,
+                       age = df$age,
+                       x2 = df$bmisds,
+                       sex = df$sex, male = "m", female = "f",
+                       item = "leptin_until6",
+                       ref = leptin.ref)
+df
+```
+
+
+### Calculate Leptin-percentiles ###
+```{r include=TRUE}
+df$leptin_perc <- sds_2d(value = df$leptin,
+                       age = df$age,
+                       x2 = df$bmisds,
+                       sex = df$sex, male = "m", female = "f",
+                       item = "leptin_until6",
+                       type = "perc",
+                       ref = leptin.ref)
+df
+```
+
+# Adults: Age- and BMI-adjusted Leptin-SDS #
+
+For adults until 80 years, leptin standard deviation scores will be calclated based on age on years and BMI. BMI is passed  to the `sds_2d()` function via the `x2=` argument. 
+
+Besides, the `sds_2d()` function takes the leptin value (`value=`), sex (`sex=`) and age (`age=`) as arguments. These values have to be given as vectors of the same length. In addition, it needs a reference object (in our case `ref=leptin.ref`) and the item (`item=`). For adults, it is 'lep_bmi'. The function returns a numeric vector of the same length containing leptin-SDS  (`type="SDS"`) or leptin percentiles (`type="perc"`). 
+
+## A single value ##
+
+```{r include=TRUE}
+sds_2d(value = 20, age = 20, x2 = 25, sex = "male", item = "lep_bmi", ref = leptin.ref)
+```
+
+
+## Within a data set ##
+
+
+### Create a sample data set ###
+
+```{r include=TRUE}
+df <- data.frame(age = seq(20, 80, by = 10),
+                 sex = sample(c("M","F"),7, replace = T),
+                 bmi = runif(7, 20, 40),
+                 leptin = runif(7, min = 0.01, max = 20))
+df
+```
+
+### Calculate Leptin-SDS ###
+
+```{r include=TRUE}
+
+df$leptin_sds <- sds_2d(value = df$leptin,
+                       age = df$age,
+                       x2 = df$bmi,
+                       sex = df$sex, male = "M", female = "F",
+                       item = "lep_bmi",
+                       ref = leptin.ref)
+df
+```

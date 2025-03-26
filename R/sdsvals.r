@@ -214,9 +214,9 @@ sds_2d <- function(value, age, x2, sex, item, ref, type = "SDS", male = "male", 
         if(is.na(value[i]) | any(is.na(unlist(par.appr[[sex[i]]][i,]))) ){
             res[i] <- NA
         } else{
-            print(paste0("gamlss.dist::p",dists[[sex[i]]],"(",value[i],",",
-                                           paste(paste(names(par.appr[[sex[i]]]),"=", par.appr[[sex[i]]][i,]), collapse = ","),
-                                           ")"))
+            ## print(paste0("gamlss.dist::p",dists[[sex[i]]],"(",value[i],",",
+            ##                                paste(paste(names(par.appr[[sex[i]]]),"=", par.appr[[sex[i]]][i,]), collapse = ","),
+            ##                                ")"))
         res[i] <- eval(parse(text = paste0("gamlss.dist::p",dists[[sex[i]]],"(",value[i],",",
                                            paste(paste(names(par.appr[[sex[i]]]),"=", par.appr[[sex[i]]][i,]), collapse = ","),
                                            ")")))
@@ -481,7 +481,7 @@ sds_pub2d <- function(value, pubstat, x2, sex, item, ref,
         tmpdf$ts <- ts
         tmpdf
       })
-      perc <- purrr::reduce(params, dplyr::inner_join)
+      perc <- purrr::reduce(params, dplyr::inner_join, by = c("sex", "value","x2","id","ts"))
       perc$res <- ifelse(perc$sex == "male", perc$male, perc$female)
       perc$res[is.infinite(perc$res)] <- NA
       dplyr::select(perc, id, res)

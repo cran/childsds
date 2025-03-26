@@ -3,7 +3,7 @@
 \docType{data}
 \name{life_shbg.ref}
 \alias{life_shbg.ref}
-\title{Parameters for shbg}
+\title{Parameters for shbg and testosterone-shbg-ratio}
 \source{
 Duergen P. et al. in preparation
 }
@@ -11,5 +11,5 @@ Duergen P. et al. in preparation
 life_shbg.ref
 }
 \description{
-Parameters for shbg
+Parameters for shbg and testosterone-shbg-ratio
 }
